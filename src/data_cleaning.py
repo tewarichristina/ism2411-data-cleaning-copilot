@@ -14,11 +14,12 @@ def clean_column_names(df):
     )
     return df
 
+#Function that handles missing values in price and qty
 def handle_missing_values(df):
     df = df.copy()
     df["price"] = pd.to_numeric(df["price"], errors="coerce")
     df["qty"] = pd.to_numeric(df["qty"], errors ="coerce")
-
+#Drops missing price
     df = df.dropna(subset=["price"])
     df["qty"] = df["qty"].fillna(1)
 
